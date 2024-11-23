@@ -1,23 +1,22 @@
 package xosc
 
-import (
-	"os"
+//go:generate stringer -type=OpenScenarioParameterType
+
+type OpenScenarioParameterType byte
+
+const (
+	Integer OpenScenarioParameterType = iota
+	Double
+	String
+	UnsignedInt
+	UnsignedShort
+	Boolean
+	DateTime
 )
-
-type OpenScenario struct{}
-
-type OpenScenarioParameterType string
 
 type OpenScenarioParameter struct {
 	Name  string
 	Type  OpenScenarioParameterType
 	Value string
 }
-
-func Load(path string) OpenScenario {
-	content, err := os.ReadFile(path)
-	if err != nil {
-		panic(err)
-	}
-
-}
+type OpenScenario struct{}
