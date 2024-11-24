@@ -18,3 +18,12 @@ func TestStringerParameterType(t *testing.T) {
 	}
 
 }
+
+func TestStringerConstraintRule(t *testing.T) {
+	var s = xosc.LessOrEqual
+
+	if s.String() != "LessOrEqual" {
+		t.Fatalf("Expected lessOrEqual got %s", s)
+	}
+
+}

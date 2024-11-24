@@ -1,11 +1,11 @@
 package xosc
 
-//go:generate stringer -type=OpenScenarioParameterType
+//go:generate stringer -type=OpenScenarioDataType
 
-type OpenScenarioParameterType byte
+type OpenScenarioDataType byte
 
 const (
-	Integer OpenScenarioParameterType = iota
+	Integer OpenScenarioDataType = iota
 	Double
 	String
 	UnsignedInt
@@ -14,9 +14,30 @@ const (
 	DateTime
 )
 
-type OpenScenarioParameter struct {
-	Name  string
-	Type  OpenScenarioParameterType
+//go:generate stringer -type=OpenScenarioConstraintRule
+
+type OpenScenarioConstraintRule byte
+
+const (
+	EqualTo OpenScenarioConstraintRule = iota
+	GreaterThan
+	LessThan
+	GreaterOrEqual
+	LessOrEqual
+	NotEqualTo
+)
+
+type OpenScenarioValueConstraint struct {
+	Rule  OpenScenarioConstraintRule
 	Value string
 }
-type OpenScenario struct{}
+
+type OpenScenarioParameter struct {
+	Name            string
+	Type            OpenScenarioDataType
+	Value           string
+	ConstraintGroup []OpenScenarioValueConstraint
+}
+type OpenScenario struct {
+	Parameters []OpenScenarioParameter
+}
