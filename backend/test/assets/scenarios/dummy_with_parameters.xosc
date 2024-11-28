@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf8'?>
+<OpenSCENARIO>
+    <FileHeader revMajor="1" revMinor="1" date="2024-11-28T23:53:00" description="Just a logical scenario to test the parameter extraction" author="Me">
+        <License name="None" />
+    </FileHeader>
+    <ParameterDeclarations>
+        <ParameterDeclaration name="P1" parameterType="double" value="69.0">
+            <ConstraintGroup>
+                <ValueConstraint rule="greaterThan" value="0" />
+                <ValueConstraint rule="lessOrEqual" value="70.0" />
+            </ConstraintGroup>
+        </ParameterDeclaration>
+        <ParameterDeclaration name="P2" parameterType="string" value="yolo" />
+        <ParameterDeclaration name="P2" parameterType="string" value="you only live once" />
+        <ParameterDeclaration name="P3" parameterType="integer" value="-1">
+            <ConstraintGroup>
+                <ValueConstraint rule="equalTo" value="69420" />
+            </ConstraintGroup>
+        </ParameterDeclaration>
+        <ParameterDeclaration name="P4" parameterType="boolean" value="true" />
+        <ParameterDeclaration name="P5" parameterType="unsignedInt" value="42">
+            <ConstraintGroup>
+                <ValueConstraint rule="greaterOrEqual" value="0" />
+                <ValueConstraint rule="lessThan" value="100" />
+            </ConstraintGroup>
+        </ParameterDeclaration>
+        <ParameterDeclaration name="P6" parameterType="unsignedShort" value="10">
+            <ConstraintGroup>
+                <ValueConstraint rule="greaterThan" value="5" />
+                <ValueConstraint rule="lessThan" value="15" />
+            </ConstraintGroup>
+        </ParameterDeclaration>
+        <ParameterDeclaration name="P7" parameterType="datetime" value="2024-11-28T23:53:00">
+            <ConstraintGroup>
+                <ValueConstraint rule="greaterOrEqual" value="2024-01-01T00:00:00" />
+                <ValueConstraint rule="lessThan" value="2025-01-01T00:00:00" />
+            </ConstraintGroup>
+        </ParameterDeclaration>
+    </ParameterDeclarations>
+    <Storyboard>
+        <!-- This is a dummy scenario -->
+    </Storyboard>
+</OpenSCENARIO>
