@@ -1,0 +1,2 @@
+directive: gazelle:exclude testdata/*
+directive: gazelle:exclude **/*.xosc
