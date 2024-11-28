@@ -6,7 +6,7 @@ go_library(
         "openscenarioconstraintrule_string.go",
         "openscenariodatatype_string.go",
         "xosc.go",
-        "xosc_parse.go",
+        "xosc_parser.go",
     ],
     importpath = "github.com/gerzin/xoscs/backend/backend/pkg/xosc",
     visibility = ["//visibility:public"],
