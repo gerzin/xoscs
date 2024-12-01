@@ -9,6 +9,6 @@ filegroup(
 go_library(
     name = "openscenario",
     srcs = ["openscenario_schema.go"],
-    importpath = "github.com/gerzin/xoscs/backend/backend/pkg/xosc/schemas",
+    importpath = "github.com/gerzin/xoscs/backend/backend/pkg/xosc/schemas/openscenario",
     visibility = ["//visibility:public"],
 )

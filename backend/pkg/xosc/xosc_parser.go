@@ -1,7 +1,20 @@
 package xosc
 
-func ExtractParameters(openscenario string) ([]OpenScenarioParameter, error) {
-	var params []OpenScenarioParameter
+import (
+	"os"
 
-	return params, nil
+	"github.com/gerzin/xoscs/backend/pkg/xosc/schemas/openscenario"
+)
+
+func ExtractParameters(filename string) ([]OpenScenarioParameter, error) {
+
+	file, err := os.Open(filename)
+
+	if err != nil {
+		return nil, err
+	}
+	defer file.Close()
+
+	var root openscenario.OpenSCENARIO
+
 }
