@@ -1,23 +1,43 @@
 package xosc
 
-import (
-	"os"
+//go:generate stringer -type=OpenScenarioDataType
+
+type OpenScenarioDataType byte
+
+const (
+	Integer OpenScenarioDataType = iota
+	Double
+	String
+	UnsignedInt
+	UnsignedShort
+	Boolean
+	DateTime
 )
 
-type OpenScenario struct{}
+//go:generate stringer -type=OpenScenarioConstraintRule
 
-type OpenScenarioParameterType string
+type OpenScenarioConstraintRule byte
 
-type OpenScenarioParameter struct {
-	Name  string
-	Type  OpenScenarioParameterType
+const (
+	EqualTo OpenScenarioConstraintRule = iota
+	GreaterThan
+	LessThan
+	GreaterOrEqual
+	LessOrEqual
+	NotEqualTo
+)
+
+type OpenScenarioValueConstraint struct {
+	Rule  OpenScenarioConstraintRule
 	Value string
 }
 
-func Load(path string) OpenScenario {
-	content, err := os.ReadFile(path)
-	if err != nil {
-		panic(err)
-	}
-
+type OpenScenarioParameter struct {
+	Name            string
+	Type            OpenScenarioDataType
+	Value           string
+	ConstraintGroup []OpenScenarioValueConstraint
+}
+type OpenScenario struct {
+	Parameters []OpenScenarioParameter
 }
