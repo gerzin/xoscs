@@ -1,0 +1,4 @@
+module(
+    name = "xoscs",
+    repo = "com_github_gerzin_xoscs",
+)
