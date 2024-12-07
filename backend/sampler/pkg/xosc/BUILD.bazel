@@ -1,0 +1,11 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library")
+
+go_library(
+    name = "xosc",
+    srcs = [
+        "openscenario.go",
+        "parser.go",
+    ],
+    importpath = "github.com/gerzin/xoscs/backend/sampler/pkg/xosc",
+    visibility = ["//visibility:public"],
+)
