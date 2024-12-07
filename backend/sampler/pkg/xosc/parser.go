@@ -2,31 +2,21 @@ package xosc
 
 import (
 	"encoding/xml"
+	"fmt"
 	"os"
 )
 
-// ExtractParameters extracts parameters from an OpenSCENARIO file.
-// It reads the file specified by the given file path, parses the XML content,
-// and extracts the parameters along with their constraints.
-//
-// Parameters:
-//   - filePath: The path to the OpenSCENARIO file.
-//
-// Returns:
-//   - A slice of Parameter structs containing the extracted parameters and their constraints.
-//   - An error if there is an issue reading the file or parsing the XML content.
-//
-// Example usage:
-//
-//	parameters, err := ExtractParameters("path/to/scenario.xosc")
-//	if err != nil {
-//	    log.Fatalf("Failed to extract parameters: %v", err)
-//	}
-//	for _, param := range parameters {
-//	    fmt.Printf("Name: %s, Type: %s, Constraint: %s\n", param.Name, param.Type, param.Constraint)
-//	}
-func ExtractParameters(filePath string) ([]ParameterDeclaration, error) {
-	var parameters []ParameterDeclaration
+type ParameterDeclarationI struct {
+	Name  string
+	Value string
+}
+
+func (p ParameterDeclarationI) String() string {
+	return fmt.Sprintf("Name: %s, Value: %s", p.Name, p.Value)
+}
+
+func ExtractParameters(filePath string) ([]ParameterDeclarationI, error) {
+	var parameters []ParameterDeclarationI
 
 	byteValue, err := os.ReadFile(filePath)
 	if err != nil {
@@ -37,6 +27,16 @@ func ExtractParameters(filePath string) ([]ParameterDeclaration, error) {
 	err = xml.Unmarshal(byteValue, &scenario)
 	if err != nil {
 		return nil, err
+	}
+
+	parDecl := scenario.OpenScenarioCategory.ScenarioDefinition.ParameterDeclarations
+
+	for _, par := range parDecl.ParameterDeclaration {
+		parameters = append(parameters, ParameterDeclarationI{
+			Name:  par.NameAttr.Parameter,
+			Value: par.ValueAttr.Parameter,
+		})
+
 	}
 
 	return parameters, nil

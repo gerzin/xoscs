@@ -3,5 +3,6 @@ load("@io_bazel_rules_go//go:def.bzl", "go_test")
 go_test(
     name = "tests_test",
     srcs = ["parser_test.go"],
+    data = glob(["testdata/*"]),
     deps = ["//backend/sampler/pkg/xosc"],
 )

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<OpenSCENARIO xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" >
+    <FileHeader description="Example" author="Yolo" revMajor="1" revMinor="1" date="2024-12-07T23:16:36"/>
+    <ParameterDeclarations>
+        <ParameterDeclaration name="P0" parameterType="double" value="0"/>
+        <ParameterDeclaration name="P1" parameterType="double" value="60.0">
+            <ConstraintGroup> 
+                <ValueConstraint rule="greaterThan" value="0.0" />
+                <ValueConstraint rule="lessOrEqual" value="60.0" />
+            </ConstraintGroup>
+        </ParameterDeclaration>
+    </ParameterDeclarations>
+    <RoadNetwork>
+        <LogicFile filepath="./Road/HighwayToHell.xodr"/>
+    </RoadNetwork>
+    <Entities>
+    </Entities>
+    <Storyboard>
+    </Storyboard>
+</OpenSCENARIO>
