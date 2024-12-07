@@ -1,0 +1,14 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+go_library(
+    name = "sampler_lib",
+    srcs = ["main.go"],
+    importpath = "github.com/gerzin/xoscs/backend/sampler/cmd/sampler",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "sampler",
+    embed = [":sampler_lib"],
+    visibility = ["//visibility:public"],
+)
