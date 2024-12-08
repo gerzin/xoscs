@@ -5,4 +5,5 @@ go_library(
     srcs = ["db.go"],
     importpath = "github.com/gerzin/xoscs/backend/catalog/internal/db",
     visibility = ["//backend/catalog:__subpackages__"],
+    deps = ["//vendor/github.com/jackc/pgx/v5:pgx"],
 )
