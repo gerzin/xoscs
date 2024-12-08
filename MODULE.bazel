@@ -3,3 +3,4 @@ This module defines the dependencies for the project.
 """
 
 #bazel_dep(name = "rules_go", version = "0.51.0-rc2")
+bazel_dep(name = "rules_proto", version = "7.0.2")

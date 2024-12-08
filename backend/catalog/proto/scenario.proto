@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package catalog;
+
+option go_package = "github.com/gerzin/xoscs/backend/catalog/proto";
+
+// The Scenario message represents a scenario with an id, name, and date.
+message Scenario {
+  int32 id = 1;
+  string name = 2;
+  string date = 3;
+}
+
+// The GetAllScenariosRequest message is used to request all scenarios.
+message GetAllScenariosRequest {}
+
+// The GetAllScenariosResponse message contains a list of scenarios.
+message GetAllScenariosResponse { repeated Scenario scenarios = 1; }
+
+// The DeleteScenarioRequest message is used to request the deletion of a
+// scenario by id.
+message DeleteScenarioRequest { int32 id = 1; }
+
+// The DeleteScenarioResponse message is used to confirm the deletion of a
+// scenario.
+message DeleteScenarioResponse { bool success = 1; }
+
+// The ScenarioService defines the service for managing scenarios.
+service ScenarioService {
+  // Get all scenarios stored in the catalog.
+  rpc GetAllScenarios(GetAllScenariosRequest) returns (GetAllScenariosResponse);
+
+  // Delete a scenario given its id.
+  rpc DeleteScenario(DeleteScenarioRequest) returns (DeleteScenarioResponse);
+}
