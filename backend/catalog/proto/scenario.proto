@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package catalog;
 
+option go_package = "github.com/gerzin/xoscs/backend/catalog/proto";
+
 // The Scenario message represents a scenario with an id, name, and date.
 message Scenario {
   int32 id = 1;
