@@ -4,7 +4,7 @@ gazelle(
     name = "gazelle",
     args = [
         "-external=vendored",
-        "-proto=disable",
+        "-proto=default",
     ],
     prefix = "github.com/gerzin/xoscs",
 )
